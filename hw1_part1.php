@@ -26,7 +26,6 @@ class First
 //3) найти в массиве число второе по величине.
     function secondLargest($arr)
     {
-        var_dump($arr);
         $largest[] = max($arr);
         $arr = array_diff($arr, $largest);
         return max($arr);
@@ -60,7 +59,8 @@ var_dump($f->positives($arr, $check));
 echo '<b>2) ' . $number=20 . ' elements of Fibonacci sequence: </b>';
 var_dump($f->sequenceFibonacci($number));
 
-echo '<b>3) Second largest number is: </b>' . $f->secondLargest([1,6,8,9,11,34,77,66,55,67,-99]);
+var_dump($arr = [1,6,8,9,11,34,77,66,55,67,-99]);
+echo '<b>3) Second largest number is: </b>' . $f->secondLargest($arr);
 
 echo '<br/><br/><b> 4) Replace values in array</b>';
 var_dump($arr = [1,2,5,8,11,78,45,47,50,24]);
