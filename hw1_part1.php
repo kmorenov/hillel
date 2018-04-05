@@ -47,9 +47,6 @@ class First
         }
         return $arr_int;
     }
-
-//Задачи по Массивам: 5,6,7,8) Написать свою реализацию следующих функций php: array_sum, in_array, array_diff , sort.
-//Задачи по строкам: 10,11,12,13)   Написать свою реализацию следующих функций php: strpos, substr, substr_count, explode.
 }
 $f = new First();
 var_dump($arr = [1,-2,3,4,5,7,-8,16,27,37,44,68,849,-8,18, 7.8, 8.8, 24]);
