@@ -2,7 +2,7 @@
 
 class First
 {
-    private $arr;
+    public $arr;
 
     public function __construct($arr)
     {
@@ -30,10 +30,10 @@ class First
     }
 
 //4) В массиве заменить все элементы, большие данного числа Z, этим числом. Подсчитать количество замен.
-    public function elemReplace(&$arr, $z)
+    public function elemReplace($z)
     {
         $i = 0;
-        foreach ($arr as &$a) {
+        foreach ($this->arr as &$a) {
             if ($a > $z) {
                 $a = $z;
                 $i++;
@@ -49,10 +49,11 @@ var_dump($f->positives($check));
 
 var_dump($arr = [1,6,8,9,11,34,77,66,55,67,-99]);
 $s = new First($arr);
-echo '<b>3) Second largest number is: </b>' . $s->secondLargest($arr);
+echo '<b>3) Second largest number is: </b>' . $s->secondLargest();
 
 echo '<br/><br/><b> 4) Replace values in array</b>';
 var_dump($arr = [1,2,5,8,11,78,45,47,50,24]);
-$i = $f->elemReplace($arr, 25);
-echo '<b>replaced values in array ' . $i . ' times</b>';
-var_dump($arr);
+$t = new First($arr);
+$i = $t->elemReplace(25);
+echo "<b>replaced values in array $i times</b>";
+var_dump($t->arr);
