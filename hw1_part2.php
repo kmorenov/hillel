@@ -8,23 +8,24 @@
 interface SecondTaskInterface
 {
     public function arraySum();
+    public function inArray();
+    public function arrayDiff(array $check);
+    public function arraySort();
 }
 
 abstract class AbstractSecondTask implements SecondTaskInterface
 {
     protected $arr;
+    protected function __construct($arr){}
+}
+
+class SecondTask extends AbstractSecondTask{
+//Задачи по Массивам: 5,6,7,8) Написать свою реализацию следующих функций php: array_sum, in_array, array_diff , sort.
     public function __construct($arr)
     {
         $this->arr = $arr;
     }
 
-    abstract public function inArray();
-    abstract public function arrayDiff(array $check);
-    abstract public function arraySort();
-}
-
-class SecondTask extends AbstractSecondTask{
-//Задачи по Массивам: 5,6,7,8) Написать свою реализацию следующих функций php: array_sum, in_array, array_diff , sort.
     public function arraySum()
     {
         echo "<b>5) array_sum </b><br> Original Array: ";
