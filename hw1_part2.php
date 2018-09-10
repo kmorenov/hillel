@@ -5,16 +5,27 @@
  * Date: 5/09/18
  * Time: 3:27 PM
  */
-class SecondTask
+interface SecondTaskInterface
 {
-    private $arr;
+    public function arraySum();
+}
+
+abstract class AbstractSecondTask implements SecondTaskInterface
+{
+    protected $arr;
     public function __construct($arr)
     {
         $this->arr = $arr;
     }
 
+    abstract public function inArray();
+    abstract public function arrayDiff(array $check);
+    abstract public function arraySort();
+}
+
+class SecondTask extends AbstractSecondTask{
 //Задачи по Массивам: 5,6,7,8) Написать свою реализацию следующих функций php: array_sum, in_array, array_diff , sort.
-    function arraySum()
+    public function arraySum()
     {
         echo "<b>5) array_sum </b><br> Original Array: ";
         var_dump( $this->arr);
@@ -29,7 +40,7 @@ class SecondTask
         return " -----<b> Manual Sum: $arrSum </b><br/>";
     }
 
-    function inArray($check = 6)
+    public function inArray($check = 6)
     {
         /********** FUNCTION *************/
         echo "<br/><b>6) </b> $check <b>in_array function: </b>" . boolval(in_array($check, $this->arr)) . "<br/>";
@@ -44,7 +55,7 @@ class SecondTask
         return "<b>$check In Array manual check</b> NOT found <br/>";
     }
 
-    function arrayDiff(array $check)
+    public function arrayDiff(array $check)
     {
         echo "<br/><b>7) array_diff</b><br/>";
         echo 'BEFORE. Array to compare from.';
@@ -72,7 +83,7 @@ class SecondTask
         return $res;
     }
 
-    function arraySort()
+    public function arraySort()
     {
         echo "<b>8) Bubble Sort.</b><br/>BEFORE sorting";
         var_dump($this->arr);
