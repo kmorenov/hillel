@@ -16,15 +16,13 @@ interface SecondTaskInterface
 abstract class AbstractSecondTask implements SecondTaskInterface
 {
     protected $arr;
-    protected function __construct($arr){}
+    public function __construct($arr){
+        $this->arr = $arr;
+    }
 }
 
 class SecondTask extends AbstractSecondTask{
 //Задачи по Массивам: 5,6,7,8) Написать свою реализацию следующих функций php: array_sum, in_array, array_diff , sort.
-    public function __construct($arr)
-    {
-        $this->arr = $arr;
-    }
 
     public function arraySum()
     {
