@@ -16,10 +16,12 @@ interface ThirdTaskInterface
 abstract class AbstractThirdTask implements ThirdTaskInterface
 {
     protected $str;
+    protected $strlen;
 
     public function __construct($str)
     {
         $this->str = $str;
+        $this->strlen = strlen($this->str);
     }
 }
 
@@ -27,40 +29,38 @@ class ThirdTask extends AbstractThirdTask
 {
     public function strpos($needle)
     {
-        $strLength = strlen($this->str);
         $needleLength = strlen($needle);
-        for ($i = 0; $i < $strLength; $i++) {
+        for ($i = 0; $i < $this->strlen; $i++) {
             if (substr($this->str, $i, $needleLength) == $needle) {
-                return 'Function: ' . strpos($this->str, $needle) . " vs Manual:  $i";
+                return $i;
             }
         }
+        return 'Needle NOT found';
     }
 
     public function substr($start)
     {
-        $arr = str_split($this->str);
-        return 'Function: ' . substr($this->str, $start) . ' vs Manual: ' . implode(array_slice($arr, $start));
+        $substr = implode(array_slice(str_split($this->str), $start));
+        return $substr;
     }
 
     public function substr_count($needle)
     {
         $counter = 0;
-        $count = strlen($this->str);
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < $this->strlen; $i++) {
             if (substr($this->str, $i, 1) == $needle) {
                 $counter++;
             }
         }
-        return "Function: " . substr_count($this->str, $needle) . " vs Manual: $counter";
+        return $counter;
     }
 
     public function explode($delimiter)
     {
         $arr_res = [];
-        $count = strlen($this->str);
         $i = 0;
         $j = 0;
-        while ($i < $count) {
+        while ($i < $this->strlen) {
             if ($this->str[$i] == $delimiter) {
                 $j++;
             } else {
@@ -68,25 +68,24 @@ class ThirdTask extends AbstractThirdTask
             }
             $i++;
         }
-        echo 'Function: ';
-        var_dump(explode($delimiter, $this->str));
-        echo ' vs Manual: ';
         return $arr_res;
     }
 }
 
-echo "10) strpos() function<br/>";
-$t10 = new ThirdTask('Hello World');
-var_dump($t10->strpos('el'));
+echo '10) strpos() <br/><b>Function: </b>' . strpos($string = 'Hello World', $needle = 'o') . '<b> vs Manual: </b>';
+$t10 = new ThirdTask($string);
+echo $t10->strpos($needle) . '</b><br/><br/>';
 
-echo "11) substr() function<br/>";
-$t11 = new ThirdTask('Hello World');
-var_dump($t11->substr(3));
+echo '11) substr() <br/><b>Function: </b>' . substr($string = 'Hello World', $start = 6) . '<b> vs Manual: </b>';
+$t11 = new ThirdTask($string);
+echo $t11->substr($start) . '</b><br/><br/>';
 
-echo "12) substr_count() function<br/>";
-$t12 = new ThirdTask('Hello World');
-var_dump($t12->substr_count('l'));
+echo '12) substr_count() <br/><b>Function: </b>' . substr_count($string = 'Hello World', $needle = 'l') . '<b> vs Manual: </b>';
+$t12 = new ThirdTask($string);
+echo $t12->substr_count($needle) . '<br/><br/>';
 
-echo "13) explode() function<br/>";
-$t13 = new ThirdTask('Hello World again thanks');
-var_dump($t13->explode(' '));
+echo '13) explode()<br/><b>Function: </b>';
+var_dump(explode($delimiter = ' ', $string = 'Hello World again thanks'));
+echo '<b> vs Manual: </b>';
+$t13 = new ThirdTask($string);
+var_dump($t13->explode($delimiter));
