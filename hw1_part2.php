@@ -44,11 +44,9 @@ class SecondTask extends AbstractSecondTask{
         /********** FUNCTION *************/
         echo "<br/><b>6) </b> $check <b>in_array function: </b>" . boolval(in_array($check, $this->arr)) . "<br/>";
         /*********************************/
-        $found = false;
         foreach ($this->arr as $item) {
             if ($item == $check) {
-                $found = true;
-                return "<b>$check In Array manual check:</b> $found <br/>";
+                return "<b>$check In Array manual check:</b> FOUND <br/>";
             }
         }
         return "<b>$check In Array manual check</b> NOT found <br/>";
